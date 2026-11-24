@@ -78,6 +78,17 @@ need. No core files are changed.
   (when Minify is on), the `element is not defined` error on every ajax link click, and the duplicate click listener
   in Vvveb 1.0.9.0's `app.js`. Fix for [#529](https://github.com/givanz/Vvveb/issues/529); turn off once core is fixed.
 
+## Settings
+
+**Plugins › Ezyweb Addons › Settings**, shown with the features switched on so every option is visible. After
+install everything is off.
+
+![Ezyweb Addons settings: orders, admin products list, admin users, and editing products and posts](docs/screenshots/settings-orders-admin.png)
+
+![Ezyweb Addons settings: shop listings, SEO and stock](docs/screenshots/settings-listings-seo-stock.png)
+
+![Ezyweb Addons settings: shop front fixes](docs/screenshots/settings-shop-front.png)
+
 ## Requirements
 
 - Vvveb 1.0.9.0 (the "fix" switches target bugs in that release; check whether each is still needed after updating
