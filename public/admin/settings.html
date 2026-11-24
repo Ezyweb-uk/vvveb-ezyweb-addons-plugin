@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--
+ Ezyweb Addons for Vvveb
+ Copyright (C) 2022  Ziadin Givan
+ Copyright (C) 2026  Ezyweb.uk
+ Licensed under the GNU Affero General Public License v3 or later, see the LICENSE file
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/favicon.ico">
+  <base href="">
+  <title>Vvveb - Ezyweb Addons</title>
+  <link href="css/admin.css" rel="stylesheet">
+  <style>
+    .ezyweb-addons .feature { max-width: 720px; }
+    .ezyweb-addons .feature input[type=number] { max-width: 120px; }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+
+    <aside class="sidebar" data-v-copy-from="index.html,.sidebar"></aside>
+
+    <main>
+
+      <header class="clearfix top-header" data-v-copy-from="index.html,.top-header"></header>
+
+      <form id="ezyweb-addons-form" action="" method="post" class="settings ezyweb-addons">
+        <input type="hidden" name="action" value="save">
+        <input type="hidden" name="csrf" data-v-csrf>
+
+        <header class="actions">
+          <div class="title">
+            <h4 class="text-muted mt-2">
+              <svg class="svg-icon la-lg" aria-hidden="true"><use href="/admin/default/img/icons.svg#settings"></use></svg>
+              Ezyweb Addons
+            </h4>
+          </div>
+          <div class="btns">
+            <a href="{$this.adminPath}index.php?module=plugin/plugins" title="Plugins list" class="btn btn-icon btn-outline-secondary me-2">
+              <svg class="svg-icon" aria-hidden="true"><use href="/admin/default/img/icons.svg#arrow-left"></use></svg> <span>Plugins list</span>
+            </a>
+            <button type="submit" class="btn btn-primary btn-icon ms-1" title="Save settings">
+              <svg class="svg-icon" aria-hidden="true"><use href="/admin/default/img/icons.svg#pencil"></use></svg> <span>Save settings</span>
+            </button>
+          </div>
+        </header>
+
+        <div>
+          <div id="main-content">
+
+            <div class="notifications" data-v-notifications data-v-copy-from="index.html,.notifications"></div>
+
+            <div class="content clearfix px-4">
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Orders</h6>
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[order_sku]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-order-sku" name="settings[order_sku]" value="1" data-v-setting-check="order_sku">
+                    <label class="form-check-label" for="ezy-order-sku">Show product SKU on order details</label>
+                  </div>
+                  <small class="text-muted">Shown under each product name in Sales › Orders › order details. The SKU is read from the product, so a product's current SKU is shown.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Admin products list</h6>
+                  <label class="form-label" for="ezy-admin-limit">Products per page in Products › Products</label>
+                  <input class="form-control" type="number" min="0" max="500" step="1" id="ezy-admin-limit" name="settings[admin_products_limit]" data-v-setting="admin_products_limit">
+                  <small class="text-muted d-block mb-3">1–500. Leave at 0 to keep Vvveb's default of 10.</small>
+
+                  <div class="form-label">Show SKU in Products › Products</div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="ezy-psku-0" name="settings[admin_products_sku]" value="0" data-v-setting-radio="admin_products_sku">
+                    <label class="form-check-label" for="ezy-psku-0">Off</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="ezy-psku-1" name="settings[admin_products_sku]" value="1" data-v-setting-radio="admin_products_sku">
+                    <label class="form-check-label" for="ezy-psku-1">Under each product name</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="ezy-psku-2" name="settings[admin_products_sku]" value="2" data-v-setting-radio="admin_products_sku">
+                    <label class="form-check-label" for="ezy-psku-2">In its own column, between Thumbnail and Product</label>
+                  </div>
+                  <small class="text-muted d-block mb-3">Products without a SKU show nothing.</small>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[admin_partial_codes]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-partial-codes" name="settings[admin_partial_codes]" value="1" data-v-setting-check="admin_partial_codes">
+                    <label class="form-check-label" for="ezy-partial-codes">Filters find part of a code</label>
+                  </div>
+                  <small class="text-muted d-block mb-3">The Sku, Model, Barcode, Upc, Ean and Isbn filters in Products › Products find products whose code contains what you type (any case), e.g. <code>123</code> finds <code>ABC-1234</code>. Vvveb only finds exact matches.</small>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[admin_partial_search]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-partial-search" name="settings[admin_partial_search]" value="1" data-v-setting-check="admin_partial_search">
+                    <label class="form-check-label" for="ezy-partial-search">Search box finds part of a name, SKU or model</label>
+                  </div>
+                  <small class="text-muted">The Search filter finds products whose name (in any language), SKU or model contains what you type, e.g. <code>dres</code> finds "Summer dress". Vvveb's search only matches whole words in the name and description, and doesn't look at SKUs.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Admin users</h6>
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[admin_access_guard]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-admin-access-guard" name="settings[admin_access_guard]" value="1" data-v-setting-check="admin_access_guard">
+                    <label class="form-check-label" for="ezy-admin-access-guard">Protect admins' site access, status and role</label>
+                  </div>
+                  <small class="text-muted">Keeps each admin's site access, status and role exactly as set in Admin users: they only change when an admin who can edit other admin users saves them there. Recommended on Vvveb 1.0.9.0 for sites with more than one admin. Admins limited to some sites before this was on may need their sites ticked again.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Editing products and posts</h6>
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[edit_save_fix]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-edit-save-fix" name="settings[edit_save_fix]" value="1" data-v-setting-check="edit_save_fix">
+                    <label class="form-check-label" for="ezy-edit-save-fix">Save other admins' products and posts in full</label>
+                  </div>
+                  <small class="text-muted">In Vvveb 1.0.9.0, saving a product, post or page created by another admin only saves its name, description, categories and fields. Status, price, stock, SKU and the other main fields stay as they were, even for a Super Admin, while the page still says "saved". With this on, those fields are saved too, for admins whose role has "Edit other users products" or "Edit other users posts". The item keeps its original author. Turn off once core is fixed.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Shop listings</h6>
+                  <label class="form-label" for="ezy-shop-limit">Products per page on shop, category, tag, manufacturer and vendor pages</label>
+                  <input class="form-control" type="number" min="0" max="100" step="1" id="ezy-shop-limit" name="settings[shop_products_limit]" data-v-setting="shop_products_limit">
+                  <small class="text-muted d-block mb-3">1–100. Leave at 0 to keep the theme's own number. When set, a <code>?limit=</code> in the page address (1–100) also works, e.g. <code>/shop?limit=48</code>. Home page blocks and related products are not changed.</small>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[subcategory_products]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-subcategory-products" name="settings[subcategory_products]" value="1" data-v-setting-check="subcategory_products">
+                    <label class="form-check-label" for="ezy-subcategory-products">Category pages include products from sub-categories</label>
+                  </div>
+                  <small class="text-muted">A category page lists the products in that category and in all of its sub-categories (any depth), each product once, so a parent category with no products of its own no longer shows "No products to display". Sorting, filters and paging still work. Other product blocks on the page are not changed. Replaces the separate Sub-category products plugin: deactivate that plugin when this is on.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">SEO</h6>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[default_lang_redirect]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-lang-redirect" name="settings[default_lang_redirect]" value="1" data-v-setting-check="default_lang_redirect">
+                    <label class="form-check-label" for="ezy-lang-redirect">Redirect default language addresses</label>
+                  </div>
+                  <small class="text-muted d-block mb-3">Permanently redirects <code>/en/mypage</code> to <code>/mypage</code>, so each page has one address. Also redirects prefixes that aren't an active language, e.g. <code>/xx/mypage</code>. Other active languages such as <code>/fr/mypage</code> are not changed. Only applies while "Include url slug" is off in Settings › Site.</small>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[canonical]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-canonical" name="settings[canonical]" value="1" data-v-setting-check="canonical">
+                    <label class="form-check-label" for="ezy-canonical">Fill the canonical tag</label>
+                  </div>
+                  <small class="text-muted">The theme's <code>&lt;link rel="canonical"&gt;</code> is empty. This fills it with the page's full address, without the query string. If the bundled SEO plugin is active, its canonical address is used instead, and the page still gets exactly one canonical tag.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Stock</h6>
+
+                  <div class="form-label">Out-of-stock products</div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="ezy-stock-0" name="settings[stock_block]" value="0" data-v-setting-radio="stock_block">
+                    <label class="form-check-label" for="ezy-stock-0">Allow ordering (Vvveb default)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="ezy-stock-1" name="settings[stock_block]" value="1" data-v-setting-radio="stock_block">
+                    <label class="form-check-label" for="ezy-stock-1">Block: they can't be added to the cart or ordered</label>
+                  </div>
+                  <small class="text-muted d-block mb-2">When blocking, a product counts as out of stock if its Stock status is ticked below, or if Subtract stock is on and its stock quantity is 0 (a variant's own quantity when one is chosen). Add to cart and Buy now are disabled, listings show "Out of stock", and such products already in a cart are removed on the cart and checkout pages with a message.</small>
+
+                  <div class="form-label">Stock statuses that count as out of stock</div>
+                  <input type="hidden" name="settings[stock_block_statuses][]" value="">
+                  <div id="ezy-stock-statuses" class="mb-3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="ezy-stock-status-3" value="3" checked>
+                      <label class="form-check-label" for="ezy-stock-status-3">Out Of Stock</label>
+                    </div>
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[block_offline]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-block-offline" name="settings[block_offline]" value="1" data-v-setting-check="block_offline">
+                    <label class="form-check-label" for="ezy-block-offline">Block disabled products from the cart</label>
+                  </div>
+                  <small class="text-muted">A disabled product's page already returns 404, but Vvveb still lets it be added to the cart with a direct request, and it stays in carts it was added to before. This blocks the add and removes it from carts on the cart and checkout pages.</small>
+                </div>
+              </div>
+
+              <div class="feature card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Shop front fixes</h6>
+                  <div class="form-check form-switch">
+                    <input type="hidden" name="settings[app_js_fix]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-app-js" name="settings[app_js_fix]" value="1" data-v-setting-check="app_js_fix">
+                    <label class="form-check-label" for="ezy-app-js">Fix the Add to cart popup and page links</label>
+                  </div>
+                  <small class="text-muted">With the Minify plugin on, the View cart and Checkout buttons in the Add to cart popup link to <code>//cart</code> and <code>//checkout</code> and do nothing. Vvveb's page links also throw a script error on every click. This adds a small script after <code>app.js</code> that fixes both, without changing core files.</small>
+
+                  <div class="form-check form-switch mt-3">
+                    <input type="hidden" name="settings[search_results_fix]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-search-fix" name="settings[search_results_fix]" value="1" data-v-setting-check="search_results_fix">
+                    <label class="form-check-label" for="ezy-search-fix">Show products in shop search results</label>
+                  </div>
+                  <small class="text-muted">Vvveb 1.0.9.0 finds matching products but never shows them on the search page or in the search box's live results, because the theme checks <code>products.count</code> on the product list. This makes that check work, without changing core or theme files. Turn it off once core is fixed.</small>
+
+                  <div class="form-check form-switch mt-3">
+                    <input type="hidden" name="settings[shop_partial_search]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-shop-partial" name="settings[shop_partial_search]" value="1" data-v-setting-check="shop_partial_search">
+                    <label class="form-check-label" for="ezy-shop-partial">Shop search finds part of a name, SKU or model</label>
+                  </div>
+                  <small class="text-muted">The search page and the live search boxes find products where every word typed appears anywhere (any case) in the name, description, SKU or model, e.g. <code>1234</code> finds SKU <code>ABC-1234</code> and <code>dres</code> finds "Summer dress". Vvveb only matches whole words of the name and description. On 1.0.9.0, also turn on "Show products in shop search results".</small>
+
+                  <div class="form-check form-switch mt-3">
+                    <input type="hidden" name="settings[checkout_region_unselected]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-checkout-region" name="settings[checkout_region_unselected]" value="1" data-v-setting-check="checkout_region_unselected">
+                    <label class="form-check-label" for="ezy-checkout-region">Checkout regions start unselected</label>
+                  </div>
+                  <small class="text-muted">The billing and shipping countries still default to the site address country, but each region shows the theme's placeholder (e.g. "Region") until the customer picks one, instead of the site address region. A region the customer has chosen is kept (from the form or their checkout session). The theme's placeholder option needs <code>selected</code>, e.g. <code>&lt;option value="" disabled selected&gt;Region&lt;/option&gt;</code>.</small>
+
+                  <div class="form-check form-switch mt-3">
+                    <input type="hidden" name="settings[region_optional]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-region-optional" name="settings[region_optional]" value="1" data-v-setting-check="region_optional">
+                    <label class="form-check-label" for="ezy-region-optional">Region only required when the country has regions</label>
+                  </div>
+                  <small class="text-muted">Vvveb requires a region for every checkout address, so customers from a country with no regions (e.g. Jersey, Guernsey, Isle of Man, Gibraltar), or whose regions are all disabled in Settings › Regions, can't place an order. With this on, the Region field is hidden and not required for those countries, and the order is saved with no region (0, as used by tax and shipping zones for "the whole country"). Countries with active regions still require one.</small>
+
+                  <div class="form-check form-switch mt-3">
+                    <input type="hidden" name="settings[alphabetical_locations]" value="0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ezy-alphabetical-locations" name="settings[alphabetical_locations]" value="1" data-v-setting-check="alphabetical_locations">
+                    <label class="form-check-label" for="ezy-alphabetical-locations">Countries and regions in alphabetical order</label>
+                  </div>
+                  <small class="text-muted">Vvveb lists countries and regions in the order they were added, so later additions and some of the install data are out of order (e.g. County Antrim to County Tyrone and Cumbria come after Wrexham). With this on, the checkout and account address forms list them alphabetically, including the regions loaded when the country changes. Admin lists keep Vvveb's order.</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </main>
+  </div>
+
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script id="admin-js" type="module" src="/js/admin.js"></script>
+  <script id="functions-js" src="/js/admin/functions.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 24 24" role="img" aria-label="Ezyweb Addons">
+  <!-- Ezyweb "e" mark: script e in a circle, outline style to match the other plugin icons -->
+  <g fill="none" stroke="#3c4044" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M7.2 12.7c3.7 -0.1 7.9 -1.4 8.1 -4.1c0.15 -2.1 -2.6 -2.8 -4.8 -1.4c-2.9 1.8 -4.1 6 -2.5 8.4c1.6 2.4 5.6 2.3 9.2 -0.7" />
+  </g>
+</svg>
